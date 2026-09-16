@@ -1,0 +1,557 @@
+.print-sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: #fff;
+    color: #111;
+
+    font-family: Tahoma, Arial, "Noto Naskh Arabic", sans-serif;
+    font-size: 11px;
+    line-height: 1.35;
+
+    box-sizing: border-box;
+
+    padding: 9mm 10mm 7mm;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.print-header {
+    display: flex;
+    direction: rtl;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #03b7ff;
+    background: linear-gradient(90deg, rgba(3, 183, 255, 1) 0%, rgba(87, 199, 133, 1) 100%, rgba(237, 221, 83, 1) 100%);
+    padding-block: 5px;
+}
+
+.ministry-text {
+    direction: rtl;
+    color: white;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 1.7;
+    padding-top: 1mm;
+}
+
+.ministry-logo {
+    direction: rtl;
+
+    width: 100px;
+
+    text-align: start;
+
+    padding-top: 1mm;
+}
+
+.ministry-logo img {
+    display: block;
+    border-left: 3px solid white;
+    padding-left: 18px;
+    width: max-content;
+    height: auto;
+    object-fit: contain;
+}
+
+
+/* ========================================
+   TITLE
+======================================== */
+
+.print-sheet h1 {
+    text-align: center;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    margin: 0 0 7mm;
+}
+
+
+/* ========================================
+   SECTIONS
+======================================== */
+
+.print-section {
+    margin-bottom: 2.5mm;
+
+    // break-inside: avoid;
+}
+
+.print-section h2 {
+    font-size: 17px;
+
+    text-align: right;
+
+    margin: 0 0 1mm;
+
+    font-weight: 800;
+}
+
+
+/* ========================================
+   TABLE
+======================================== */
+
+.p-table {
+    display: grid;
+
+    border-top: 1px solid #222;
+    border-right: 1px solid #222;
+}
+
+.four-cols {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.three-cols {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.two-cols {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* ========================================
+   NORMAL CELLS
+======================================== */
+
+.p-cell {
+    min-height: 9mm;
+
+    border: 1px solid #222;
+    border-bottom: 1px solid #222;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.p-label {
+    background: #eee;
+
+    border-bottom: 1px solid #9eb6e8;
+
+    min-height: 6mm;
+
+    padding: 1.2mm;
+
+    text-align: center;
+
+    font-weight: 700;
+}
+
+.p-value {
+    flex: 1;
+
+    min-height: 5mm;
+
+    padding: 1.3mm;
+
+    text-align: right;
+
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+
+/* ========================================
+   SPECIAL INFORMATION ROWS
+======================================== */
+
+/*
+    Row 1:
+
+    منفذ البرنامج | data | الجهة الداعمة | data
+*/
+
+.p-field-row {
+    grid-column: span 4;
+
+    display: grid;
+
+    /*
+        4 equal columns:
+
+        label | data | label | data
+    */
+    grid-template-columns: repeat(4, 1fr);
+
+    min-height: 11mm;
+}
+
+.p-field-row>* {
+    min-height: 11mm;
+
+    border-left: 1px solid #222;
+    border-bottom: 1px solid #222;
+}
+
+
+/* Labels */
+
+.p-field-row .p-label {
+    background: #eee;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    font-weight: 700;
+
+    padding: 1.2mm;
+
+    border-bottom: 1px solid #222;
+}
+
+
+/* Data */
+
+.p-field-row .p-value {
+    display: flex;
+
+    align-items: center;
+
+    background: #fff;
+
+    padding: 1.3mm;
+
+    text-align: right;
+
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+
+    border-bottom: 1px solid #222;
+}
+
+
+/*
+    Goal row:
+
+    الهدف العام للبرنامج | data
+                              data
+                              data
+*/
+
+.p-value-wide {
+    grid-column: span 3;
+}
+
+
+/* ========================================
+   PROCEDURE
+======================================== */
+
+.p-procedure {
+    display: grid;
+
+    grid-template-columns: 35mm 1fr;
+
+    border: 1px solid #222;
+
+    min-height: 29mm;
+}
+
+.procedure-title {
+    background: #eee;
+
+    border-left: 1px solid #222;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    font-weight: 700;
+}
+
+.procedure-line {
+    min-height: 7mm;
+
+    border-bottom: 1px solid #9eb6e8;
+
+    padding: 1.3mm 3mm;
+}
+
+.procedure-line:last-child {
+    border-bottom: 0;
+}
+
+.procedure-line span {
+    display: inline-block;
+
+    min-width: 6mm;
+
+    font-weight: 700;
+}
+
+
+/* ========================================
+   EVIDENCE / PHOTOS
+======================================== */
+
+.evidence-box {
+    display: grid;
+
+    grid-template-columns: 1fr 88mm;
+
+    border: 1px solid #222;
+
+    min-height: 50mm;
+    width: 100%;
+
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+.evidence-new-page {
+    break-before: page;
+    page-break-before: always;
+
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.evidence-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 3mm;
+
+    background: #eee;
+
+    font-weight: 700;
+
+    border-bottom: 1px solid #000;
+}
+
+.photo-label {
+    border-left: 1px solid #222;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    background: #fff;
+}
+
+.photos {
+    padding: 3mm;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 2mm;
+
+    align-content: start;
+
+    min-height: 48mm;
+}
+
+.photos img {
+    width: 100%;
+    height: 450px;
+
+    object-fit: cover;
+
+    border: 1px solid #bbb;
+
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+.photos span {
+    grid-column: 1 / -1;
+
+    text-align: center;
+
+    color: #777;
+
+    padding-top: 15mm;
+}
+
+
+/* ========================================
+   SIGNATURES
+======================================== */
+
+/*
+    Row 1:
+
+    الموجه/ة الصحي/ة | data | التوقيع | data
+
+    Row 2:
+
+    مدير/ة المدرسة | data | التوقيع | data
+*/
+
+.signatures {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    border: 1px solid #222;
+
+    margin-top: 10px;
+
+    min-height: 13mm;
+
+    direction: rtl;
+}
+
+.signature-label,
+.signature-value {
+    min-height: 13mm;
+
+    padding: 1.5mm;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border-left: 1px solid #222;
+}
+
+.signature-label {
+    background: #eee;
+
+    font-weight: 700;
+}
+
+.signature-value {
+    background: #fff;
+}
+
+
+/*
+    Remove left border from the last
+    cell in each row.
+*/
+
+.signatures> :nth-child(4n) {
+    border-left: 0;
+}
+
+
+/*
+    Horizontal line between the two rows.
+*/
+
+.signatures> :nth-child(-n + 4) {
+    border-bottom: 1px solid #222;
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+footer {
+    font-size: 10px;
+
+    text-align: right;
+
+    margin-top: 1.5mm;
+}
+
+footer div {
+    margin-top: 1mm;
+}
+
+
+/* ========================================
+   SCREEN
+======================================== */
+
+@media screen {
+
+    .print-sheet {
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .photos {
+        max-height: 100mm;
+
+        overflow: visible;
+    }
+}
+
+
+/* ========================================
+   PRINT
+======================================== */
+
+@media print {
+
+    @page {
+        size: A4 portrait;
+
+        margin: 0;
+    }
+
+    .print-sheet {
+        width: 210mm;
+        min-height: 297mm;
+
+        margin: 0;
+
+        padding: 9mm 10mm 7mm;
+
+        box-shadow: none;
+    }
+
+    .print-sheet h1 {
+        font-size: 19px;
+    }
+
+    .print-section h2 {
+        font-size: 16px;
+    }
+
+    .p-table {
+        break-inside: avoid;
+    }
+
+    .evidence-print {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .evidence-box {
+        break-inside: avoid;
+    }
+
+    .photos {
+        overflow: visible;
+    }
+
+    .photos img {
+        break-inside: avoid;
+    }
+
+    .signatures {
+        break-inside: avoid;
+    }
+}
