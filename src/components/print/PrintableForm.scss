@@ -252,11 +252,13 @@
 .p-procedure {
     display: grid;
 
-    grid-template-columns: 35mm 1fr;
+    grid-template-columns: 35mm minmax(0, 1fr);
 
     border: 1px solid #222;
 
     min-height: 29mm;
+    width: 100%;
+    max-width: 100%;
 }
 
 .procedure-title {
@@ -277,9 +279,13 @@
 .procedure-line {
     min-height: 7mm;
 
-    border-bottom: 1px solid #9eb6e8;
+    border-bottom: 1px solid #22222291;
 
     padding: 1.3mm 3mm;
+
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .procedure-line:last-child {
@@ -366,7 +372,7 @@
 
 .photos img {
     width: 100%;
-    height: 450px;
+    max-height: 450px;
 
     object-fit: cover;
 

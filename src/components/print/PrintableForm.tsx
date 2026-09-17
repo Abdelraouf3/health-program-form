@@ -14,13 +14,16 @@ const Cell = ({
   label,
   children,
   className = '',
+  labelClassName = '',
 }: {
   label: string
   children?: ReactNode
   className?: string
+  labelClassName?: string
+  
 }) => (
   <div className={`p-cell ${className}`}>
-    <div className="p-label text-center min-w-[150px]">{label}</div>
+    <div className={`p-label text-center min-w-[150px] ${labelClassName}`}>{label}</div>
     <Value>{children}</Value>
   </div>
 )
@@ -43,11 +46,11 @@ export function PrintableForm({ data }: Props) {
 
       <section className="print-section">
 
-        <Cell label="اسم المدرسة" className='flex-row! justify-center mb-3'>
+        <Cell label="اسم المدرسة" className='flex-row! justify-center mb-3' labelClassName='border-b-0! border-e border-[#9eb6e8]'>
           {data.schoolName}
         </Cell>
 
-        <Cell label="اسم البرنامج الصحي" className='flex-row! justify-center mb-5'>
+        <Cell label="اسم البرنامج الصحي" className='flex-row! justify-center mb-5' labelClassName='border-b-0! border-e border-[#9eb6e8]'>
           {data.healthProgramName}
         </Cell>
 
@@ -93,45 +96,51 @@ export function PrintableForm({ data }: Props) {
       
       </section>
 
-      <section className="print-section procedure-print">
-
-        <div className="p-procedure">
-
-          <div className="procedure-title"> خطوات التنفيذ / الوصف</div>
-
-          <div>
-            {data.implementationSteps
-              .filter(Boolean)
-              .map((p, i) => (
-                <div className="procedure-line" key={i}>
-                  <span>{i + 1}</span>
-                  {p}
-                </div>
-              ))}
+      <section className="flex flex-nowrap items-stretch gap-5">
+      
+        <section className="print-section procedure-print flex-1 min-w-0">
+  
+          <div className="p-procedure block! h-full">
+  
+            <div className="procedure-title border-e-0! border-b border-[#9eb6e8]"> خطوات التنفيذ / الوصف</div>
+  
+            <div>
+              {data.implementationSteps
+                .filter(Boolean)
+                .map((p, i) => (
+                  <div className="procedure-line" key={i}>
+                    <span>{i + 1}</span>
+                    {p}
+                  </div>
+                ))}
+            </div>
+  
           </div>
-
-        </div>
+        </section>
+  
+        <section className="print-section procedure-print flex-1 min-w-0">
+  
+          <div className="p-procedure block! h-full">
+  
+            <div className="procedure-title border-e-0! border-b border-[#9eb6e8]"> الأهداف</div>
+  
+            <div>
+              {data.objectives
+                .filter(Boolean)
+                .map((o, i) => (
+                  <div className="procedure-line" key={i}>
+                    <span>{i + 1}</span>
+                    {o}
+                  </div>
+                ))}
+            </div>
+  
+          </div>
+        </section>
+      
       </section>
 
-      <section className="print-section procedure-print">
-
-        <div className="p-procedure">
-
-          <div className="procedure-title"> الأهداف</div>
-
-          <div>
-            {data.objectives
-              .filter(Boolean)
-              .map((o, i) => (
-                <div className="procedure-line" key={i}>
-                  <span>{i + 1}</span>
-                  {o}
-                </div>
-              ))}
-          </div>
-
-        </div>
-      </section>
+      
 
       {/* <section className="print-section evidence-print">
 
@@ -162,7 +171,7 @@ export function PrintableForm({ data }: Props) {
       
         <div className="evidence-box block!">
       
-          <h3 className="evidence-title">
+          <h3 className="evidence-title border-e-0! border-b border-[#9eb6e8]!">
             الشواهد / الصور
           </h3>
       
@@ -176,7 +185,7 @@ export function PrintableForm({ data }: Props) {
                   key={image.id}
                   src={image.url}
                   alt="شاهد تنفيذ"
-                  className={`${ data.images.length > 2 ? "": "h-[280px]! object-contain!" }`}
+                  className={`${ data.images.length > 2 ? "": "max-h-[280px]! object-contain!" }`}
                 />
               
               ))
@@ -195,11 +204,11 @@ export function PrintableForm({ data }: Props) {
 
       <section className={`signatures grid-cols-2! ${ data.images.length > 2 ? "mt-5!": "" }`}>
 
-        <div className="signature-label">
+        <div className="signature-label border-b-[#9eb6e8]!">
           الموجه/ة الصحي/ة
         </div>
 
-        <div className="signature-label">
+        <div className="signature-label border-b-[#9eb6e8]!">
           مدير/ة المدرسة
         </div>
 
